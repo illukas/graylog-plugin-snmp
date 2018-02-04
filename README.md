@@ -1,14 +1,15 @@
 SNMP Plugin for Graylog
 =======================
 Fork specific info:
+
 [Download the plugin](https://github.com/illukas/graylog-plugin-snmp/releases)
 and place the `.jar` file in your Graylog plugin directory. Restart Graylog.
 
 Launch a new input and configure it:
-   -Settings marked Optional are needed only for V3 inputs. Leave them at default for v1/v2c.
-   -If you absolutely must use udp/162 port, then route traffic in your firewall udp/162 > udp/1620 because Graylog can't bind   to ports under 1024.
-   -Additional MIBs are now sorted by filename 0-9/a-Z after loading, which happens after receiving the first trap. MIB loader writes what its doing into the graylog server log.
-   -Traps that fail to match the configuration or security model will produce an error message in the graylog server log. V3 traps tend to fail without errors. That shall be looked into in the future.
+   * Settings marked Optional are needed only for V3 inputs. Leave them at default for v1/v2c.
+   * If you absolutely must use udp/162 port, then route traffic in your firewall udp/162 > udp/1620 because Graylog can't bind   to ports under 1024.
+   * Additional MIBs are now sorted by filename 0-9/a-Z after loading, which happens after receiving the first trap. MIB loader writes what its doing into the graylog server log.
+   * Traps that fail to match the configuration or security model will produce an error message in the graylog server log. V3 traps tend to fail without errors. That shall be looked into in the future.
 
 This plugin provides an input plugin to receive SNMP traps.
 
