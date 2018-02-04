@@ -1,6 +1,7 @@
 package org.graylog.snmp.oid;
 
 import com.google.common.collect.ImmutableList;
+import edu.emory.mathcs.backport.java.util.Collections;
 import net.percederberg.mibble.Mib;
 import net.percederberg.mibble.MibLoader;
 import net.percederberg.mibble.MibLoaderException;
@@ -68,13 +69,15 @@ public class SnmpMibsLoader {
         }
 
         final Collection<File> mibFiles = FileUtils.listFiles(mibsDir, TrueFileFilter.INSTANCE, TrueFileFilter.INSTANCE);
+        //listFiles method does not guarantee any kind of order, so here we do sort them alphabetically.
+        Collections.sort((List) mibFiles);
 
         if (mibFiles.isEmpty()) {
             LOG.warn("Can not find any MIB files in {}", mibsPath);
         }
 
         for (File file : mibFiles) {
-            LOG.debug("Loading MIBs file: {}", file);
+            LOG.info("Loading MIBs file: {}", file);
             try {
                 if (file.isFile()) {
                     loader.load(file);

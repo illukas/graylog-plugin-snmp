@@ -31,7 +31,7 @@ public class SnmpPluginMetaData implements PluginMetaData {
 
     @Override
     public Version getVersion() {
-        return new Version(0, 3, 1);
+        return new Version(0, 4, 0);
     }
 
     @Override
